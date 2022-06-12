@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>index</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/index.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<img id="logonav" src="img/logo.jpg" alt="LogoTienda">
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-center">
+					<li><a href="/">Inicio</a></li>
+					<li><a href="/mujer">Mujer</a></li>
+					<li><a href="/hombre">Hombre</a></li>
+					<li><a href="/accesorios">Accesorios</a></li>
+					<li><a href="/contacto">Contáctanos</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><button type="button" id="botoncesta"
+							class="btn btn-light">Carrito</button></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+							Sign Up</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+							Login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	 <div class="container">
+        <div class="row">
+            <div style="padding-top: 3%; padding-bottom: 3%;" class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 text-center bg-dark">
+              <h2 style="text-align: center; color: aliceblue;">
+                Contáctanos...
+              </h2><br>
+                <form name="form" autocomplete="off">
+                    <div id="filaForm">
+                      <div id="bloqueDatos">
+                        <div id="bloqueNombre">
+                          <label for="nombre" style="color:aliceblue">Nombre y Apellidos: &nbsp;</label>
+                          <input type="text" name="nombre" id="nombre" class="cajas">
+                        </div><br>
+                        <div id="bloqueemail">
+                          <label for="email" style="color:aliceblue">Correo electrónico: &nbsp;</label>
+                          <input type="email" name="email" id="email" class="cajas">
+                        </div><br>
+                        <div id="bloquetelefono">
+                          <label for="telefono" style="color:aliceblue">Teléfono: &nbsp;</label>
+                          <input type="text" name="telefono" id="telefono" class="cajas">
+                        </div><br>
+                      </div>
+                      <div id="bloqueObservaciones">
+                        <label id="labelObservaciones" for="observaciones" style="color:aliceblue">Observaciones</label>
+                        </br>
+                        <textarea rows="5" cols="45" name="observaciones" id="observaciones" class="cajas"></textarea>
+                      </div>
+                    </div><br>
+                    <div id="filaForm">
+                      <div id="bloquePrivacidad">
+                        <input type="checkbox" name="privacidad" id="privacidad">
+                        <label for="privacidad" style="color:aliceblue">Política de privacidad</label><br><br>
+                        <button type="submit" value="enviar" name="submit">Contactar</button>
+                  </form>
+            </div>
+         </div>
+    </div><br>
+
+
+
+</body>
+</html>

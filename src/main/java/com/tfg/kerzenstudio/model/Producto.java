@@ -26,6 +26,8 @@ public class Producto{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String nombre;
+	
 	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 	
@@ -55,40 +57,40 @@ public class Producto{
 		this.talla = talla;
 		this.precio = precio;
 	}
+	
+	
 
-
-
-
+	
+	
+	public Producto(Long id, String nombre, Tipo tipo, String imgUrl, Talla talla, float precio) {
+		this.id = id;
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.imgUrl = imgUrl;
+		this.talla = talla;
+		this.precio = precio;
+	}
 
 
 	//GETTERS Y SETTERS
+
 	public Long getId() {
 		return id;
 	}
 
 
-	public void setIdproducto(Long idproducto) {
-		this.id = idproducto;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 
-	public Talla getTalla() {
-		return talla;
+	public String getNombre() {
+		return nombre;
 	}
 
 
-	public void setTalla(Talla talla) {
-		this.talla = talla;
-	}
-
-
-	public float getPrecio() {
-		return precio;
-	}
-
-
-	public void setPrecio(float precio) {
-		this.precio = precio;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 
@@ -112,6 +114,24 @@ public class Producto{
 	}
 
 
+	public Talla getTalla() {
+		return talla;
+	}
+
+
+	public void setTalla(Talla talla) {
+		this.talla = talla;
+	}
+
+
+	public float getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(float precio) {
+		this.precio = precio;
+	}
 
 
 	public List<Carrito> getCarritos() {
@@ -122,6 +142,12 @@ public class Producto{
 	public void setCarritos(List<Carrito> carritos) {
 		this.carritos = carritos;
 	}
+
+
+
+
+
+
 	
 	
 	
