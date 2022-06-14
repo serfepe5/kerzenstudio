@@ -25,7 +25,7 @@ public class PedidoService {
 	}
 
 	//CARRITO POR REFERENCIA
-	public Pedido findPrenda(Long id) {
+	public Pedido findPedido(Long id) {
 		Optional<Pedido> pedido = repo.findById(id);
 		if (pedido.isPresent()) {
 			return pedido.get();
@@ -44,6 +44,11 @@ public class PedidoService {
 	//BORRAR CARRITO
 	public void delete(Long id) {
 		repo.deleteById(id);
+	}
+	
+	//AÑADIR PRODUCTO A CARRITO
+	public void aniadirproductoacarrito() {
+		
 	}
 
 

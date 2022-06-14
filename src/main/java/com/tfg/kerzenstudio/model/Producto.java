@@ -38,6 +38,8 @@ public class Producto{
 	
 	private float precio;
 	
+	private int stock;
+	
 	
 	@ManyToMany
     @JoinTable(name = "carritoproductos", 
@@ -69,6 +71,22 @@ public class Producto{
 		this.imgUrl = imgUrl;
 		this.talla = talla;
 		this.precio = precio;
+	}
+	
+	
+
+
+	public Producto(Long id, String nombre, Tipo tipo, String imgUrl, Talla talla, float precio, int stock,
+			List<Carrito> carritos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.imgUrl = imgUrl;
+		this.talla = talla;
+		this.precio = precio;
+		this.stock = stock;
+		this.carritos = carritos;
 	}
 
 
@@ -141,6 +159,16 @@ public class Producto{
 
 	public void setCarritos(List<Carrito> carritos) {
 		this.carritos = carritos;
+	}
+
+
+	public int getStock() {
+		return stock;
+	}
+
+
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
 

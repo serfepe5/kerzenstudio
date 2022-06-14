@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import com.tfg.kerzenstudio.repositories.UsuarioRepository;
 
 @Service
 @Transactional
-public class UsuarioService {
+public class UsuarioService implements UserDetailsService {
 
 
 	@Autowired
@@ -45,6 +46,10 @@ public class UsuarioService {
 		return usu;
 	} 
 	
+	public Optional<Usuario> buscarusuario(String username)
+	{
+		return repo.findByUser(username);
+	}	
 
 	public void save(Usuario usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

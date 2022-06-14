@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>index</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/index.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<img id="logonav" src="img/logo.jpg" alt="LogoTienda">
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-center">
+					<li><a href="/">Inicio</a></li>
+					<li><a href="/mujer">Mujer</a></li>
+					<li><a href="/hombre">Hombre</a></li>
+					<li><a href="/accesorios">Accesorios</a></li>
+					<li><a href="/contacto">Contáctanos</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><button type="button" id="botoncesta"
+							class="btn btn-light">Carrito</button></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+							Sign Up</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+							Login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<form action="#" th:action="@{/guardarproducto}" th:object="${producto}"
+		method="post">
+
+		<table border="0" cellpadding="10">
+			<tr>
+				<td>ID Producto:</td>
+				<td><input type="text" th:field="*{id}" readonly="readonly" />
+				</td>
+			</tr>
+			<tr>
+				<td>Nombre de producto</td>
+				<td><input type="text" th:field="*{nombre}" /></td>
+			</tr>
+			<tr>
+				<td>Tipo de producto</td>
+				<td><input type="radio" value="MUJER" th:field="*{tipo}" />MUJER</td>
+				<td><input type="radio" value="HOMBRE" th:field="*{tipo}" />HOMBRE</td>
+				<td><input type="radio" value="ACCESORIO" th:field="*{tipo}" />ACCESORIO</td>
+			</tr>
+			<tr>
+				<td>Talla</td>
+				<td><input type="radio" value="XS" th:field="*{talla}" />XS</td>
+				<td><input type="radio" value="S" th:field="*{talla}" />S</td>
+				<td><input type="radio" value="M" th:field="*{talla}" />M</td>
+				<td><input type="radio" value="L" th:field="*{talla}" />L</td>
+				<td><input type="radio" value="XL" th:field="*{talla}" />XL</td>
+			</tr>
+			<tr>
+				<td>URL de la imagen</td>
+				<td><input type="text" th:field="*{imgUrl}" /></td>
+			</tr>
+			<tr>
+				<td>Precio</td>
+				<td><input type="text" th:field="*{precio}" /></td>
+			</tr>
+			<tr>
+				<td>Stock</td>
+				<td><input type="text" th:field="*{stock}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button type="submit">Guardar</button></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+	</div>
+	</div>
+	<br>
+
+
+
+</body>
+</html>

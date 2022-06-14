@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,9 +23,9 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne(mappedBy="pedido")
+	@OneToOne(mappedBy = "pedido")
 	private Carrito carrito;
-	
+
 	float precioPedido;
 
 	private Date fechapedido;
@@ -36,13 +38,17 @@ public class Pedido {
 
 	private Estado estado;
 
+	@ManyToOne
+	@JoinColumn(name = "idusuario")
+	private Usuario usuario;
+
 	// CONSTRUCTORES
 	public Pedido() {
 
 	}
 
-	public Pedido(Long idpedido,float precioPedido, Date fechapedido, Date fechaentrega,
-			String direccionentrega, MetodoPago metodopago, Estado estado) {
+	public Pedido(Long idpedido, float precioPedido, Date fechapedido, Date fechaentrega, String direccionentrega,
+			MetodoPago metodopago, Estado estado) {
 		this.id = idpedido;
 		this.precioPedido = precioPedido;
 		this.fechapedido = fechapedido;
@@ -108,7 +114,21 @@ public class Pedido {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	
-	
+
+	public Carrito getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 }

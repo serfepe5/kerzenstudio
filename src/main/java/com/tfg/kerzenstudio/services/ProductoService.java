@@ -28,7 +28,7 @@ public class ProductoService {
 
 	
 	//PRODUCTO POR REFERENCIA
-	public Producto findproductos(Long id) {
+	public Producto findProductos(Long id) {
 		Optional<Producto> producto = repo.findById(id);
 		if (producto.isPresent()) {
 			return producto.get();

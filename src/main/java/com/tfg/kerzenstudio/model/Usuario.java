@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -30,7 +32,11 @@ public class Usuario implements UserDetails {
 	private String correo;
 	@Enumerated(EnumType.STRING)
 	private Rol rol;
-
+	@OneToOne(mappedBy="usuario")
+	private Carrito carrito;
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Pedido> pedidos =new ArrayList<>();
 	
 	//CONSTRUCTORES
 	public Usuario() {
@@ -136,5 +142,23 @@ public class Usuario implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
+	public Carrito getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
+	
 
 }
