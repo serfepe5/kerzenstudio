@@ -27,8 +27,10 @@ public class CarritoService {
 		if (producto.isPresent()) {
 			if (carrito.containsKey(producto.get())) {
 				carrito.replace(producto.get(), carrito.get(producto.get()) + 1);
+			}else {
+				carrito.put(producto.get(), 1);
 			}
-			carrito.put(producto.get(), 1);
+			precioTotalCarrito();
 		}
 	}
 
@@ -40,6 +42,7 @@ public class CarritoService {
 			} else if (carrito.get(producto.get()) == 1) {
 				carrito.remove(producto.get());
 			}
+			precioTotalCarrito();
 		}
 	}
 
@@ -49,5 +52,9 @@ public class CarritoService {
 
 	public Map<Producto, Integer> getCarrito() {
 		return carrito;
+	}
+	
+	public Optional<Float> precioTotalCarrito() {
+		return carrito.keySet().stream().map(Producto::getPrecio).reduce(Float::sum);
 	}
 }

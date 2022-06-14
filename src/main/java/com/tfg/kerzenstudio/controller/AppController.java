@@ -2,6 +2,7 @@ package com.tfg.kerzenstudio.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -171,6 +172,8 @@ public class AppController {
 	public String viewCarritoPage(Model model) {
 		Map<Producto, Integer> productoscarrito = carritoservice.getCarrito();
 		model.addAttribute("productoscarrito", productoscarrito);
+		Optional<Float> precioTotal = carritoservice.precioTotalCarrito();
+		model.addAttribute("precioTotal", precioTotal.get());
 		return "carrito";
 	}
 
@@ -194,5 +197,6 @@ public class AppController {
 		carritoservice.vaciarCarrito();
 		return "";
 	}
-
+	
+	
 }

@@ -60,9 +60,12 @@
 						alt="Imagen no disponible">
 					<h6 th:text="${productocarrito.getKey().nombre}"></h6>
 					<h6 th:text="${productocarrito.getKey().precio} +'€'"></h6>
+					<h6 th:text="${productocarrito.getValue()} +'unidades'"></h6>
 					<a th:href="'/eliminarproductocarrito/' + ${productocarrito.getKey().id}">ELIMINAR DE LA CESTA</a>
-
 				</div>
+				<section>
+				<h6 th:text="${precioTotal}">PRECIO TOTAL:</h6>
+				</section>
 
 
 			</div>
