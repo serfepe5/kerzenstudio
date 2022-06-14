@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tfg.kerzenstudio.enums.Rol;
 import com.tfg.kerzenstudio.enums.Tipo;
+import com.tfg.kerzenstudio.model.Pedido;
 import com.tfg.kerzenstudio.model.Producto;
 import com.tfg.kerzenstudio.model.Usuario;
 import com.tfg.kerzenstudio.services.CarritoService;
@@ -172,8 +173,9 @@ public class AppController {
 	public String viewCarritoPage(Model model) {
 		Map<Producto, Integer> productoscarrito = carritoservice.getCarrito();
 		model.addAttribute("productoscarrito", productoscarrito);
-		Optional<Float> precioTotal = carritoservice.precioTotalCarrito();
-		model.addAttribute("precioTotal", precioTotal.get());
+		Float precioTotal = carritoservice.precioTotalCarrito();
+		model.addAttribute("precioTotal", precioTotal);
+		
 		return "carrito";
 	}
 
@@ -191,12 +193,29 @@ public class AppController {
 		return "redirect:/carrito";
 	}
 
-	// borrar producto de carrito
+	// borrar  carrito
 	@RequestMapping("/borrarcarrito")
 	public String viewBorrarCarrito() {
 		carritoservice.vaciarCarrito();
-		return "";
+		return "redirect:/carrito";
 	}
+	
+	// vista carrito
+		@RequestMapping("/pedido")
+		public String viewPedidoPage(Model model) {
+			Map<Producto, Integer> productoscarrito = carritoservice.getCarrito();
+			Pedido pedido = pedidoservice.crearPedido(productoscarrito);
+			model.addAttribute("pedido", pedido);
+			return "pedido";
+		}
+		
+		// vista carrito
+		@RequestMapping("/verpedidos")
+		public String viewPedidosPage(Model model) {
+			List<Pedido> pedidos = pedidoservice.findPedidoUser();
+			model.addAttribute("pedidos", pedidos);
+			return "verpedidos";
+		}
 	
 	
 }

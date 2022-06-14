@@ -2,6 +2,7 @@ package com.tfg.kerzenstudio.services;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,11 @@ public class CarritoService {
 		return carrito;
 	}
 	
-	public Optional<Float> precioTotalCarrito() {
-		return carrito.keySet().stream().map(Producto::getPrecio).reduce(Float::sum);
+	public Float precioTotalCarrito() {
+		float precio = 0;
+		for(Entry<Producto, Integer> producto : carrito.entrySet()) {
+			precio += producto.getKey().getPrecio()*producto.getValue();
+		}
+		return precio;
 	}
 }

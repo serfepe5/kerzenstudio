@@ -58,8 +58,7 @@
 					<h6 th:text="${productoaccesorio.nombre}"></h6>
 					<h6 th:text="${productoaccesorio.precio} +'€'"></h6>
 					<h6 th:text="${productoaccesorio.stock} +' uds disponibles'"></h6>
-					<button sec:authorize="isAuthenticated()">AÑADIR A LA CESTA</button>
-					<button sec:authorize="!isAuthenticated()">INICIA SESION PARA COMPRAR</button>
+					<a th:href="'/aniadirproductocarrito/' + ${productoaccesorio.id}" sec:authorize="isAuthenticated()">COMPRAR</a>
 					
 				</div>
 

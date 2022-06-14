@@ -1,18 +1,19 @@
 package com.tfg.kerzenstudio.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.tfg.kerzenstudio.enums.Estado;
-import com.tfg.kerzenstudio.enums.MetodoPago;
 
 @Entity
 @Table(name = "pedidos")
@@ -22,21 +23,23 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@ManyToMany
+    @JoinTable(name = "pedidoproductos", 
+        joinColumns = { @JoinColumn(name = "idproducto") }, 
+        inverseJoinColumns = { @JoinColumn(name = "idpedido") })
+	private List<Producto> productos = new ArrayList<>();
+	
+	
 
-	@OneToOne(mappedBy = "pedido")
-	private Carrito carrito;
 
 	float precioPedido;
 
 	private Date fechapedido;
-
-	private Date fechaentrega;
-
+	
 	private String direccionentrega;
 
-	private MetodoPago metodopago;
 
-	private Estado estado;
 
 	@ManyToOne
 	@JoinColumn(name = "idusuario")
@@ -47,15 +50,11 @@ public class Pedido {
 
 	}
 
-	public Pedido(Long idpedido, float precioPedido, Date fechapedido, Date fechaentrega, String direccionentrega,
-			MetodoPago metodopago, Estado estado) {
+	public Pedido(Long idpedido, float precioPedido, Date fechapedido, String direccionentrega) {
 		this.id = idpedido;
 		this.precioPedido = precioPedido;
 		this.fechapedido = fechapedido;
-		this.fechaentrega = fechaentrega;
 		this.direccionentrega = direccionentrega;
-		this.metodopago = metodopago;
-		this.estado = estado;
 	}
 
 	// GETTERS Y SETTERS
@@ -83,13 +82,7 @@ public class Pedido {
 		this.fechapedido = fechapedido;
 	}
 
-	public Date getFechaentrega() {
-		return fechaentrega;
-	}
-
-	public void setFechaentrega(Date fechaentrega) {
-		this.fechaentrega = fechaentrega;
-	}
+	
 
 	public String getDireccionentrega() {
 		return direccionentrega;
@@ -99,29 +92,6 @@ public class Pedido {
 		this.direccionentrega = direccionentrega;
 	}
 
-	public MetodoPago getMetodopago() {
-		return metodopago;
-	}
-
-	public void setMetodopago(MetodoPago metodopago) {
-		this.metodopago = metodopago;
-	}
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	public Carrito getCarrito() {
-		return carrito;
-	}
-
-	public void setCarrito(Carrito carrito) {
-		this.carrito = carrito;
-	}
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -130,5 +100,15 @@ public class Pedido {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+	
+	
 
 }

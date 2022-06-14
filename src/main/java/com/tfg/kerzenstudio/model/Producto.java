@@ -41,12 +41,12 @@ public class Producto{
 	
 	private int stock;
 	
-	
 	@ManyToMany
-    @JoinTable(name = "carritoproductos", 
-        joinColumns = { @JoinColumn(name = "idproducto") }, 
-        inverseJoinColumns = { @JoinColumn(name = "idcarrito") })
-	private List<Carrito> carritos = new ArrayList<>();
+    @JoinTable(name = "pedidoproductos", 
+        joinColumns = { @JoinColumn(name = "idpedido") }, 
+        inverseJoinColumns = { @JoinColumn(name = "idproducto") })
+	private List<Pedido> pedidos = new ArrayList<>();
+	
 	
 	
 	//CONSTRUCTORES
@@ -77,18 +77,6 @@ public class Producto{
 	
 
 
-	public Producto(Long id, String nombre, Tipo tipo, String imgUrl, Talla talla, float precio, int stock,
-			List<Carrito> carritos) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.imgUrl = imgUrl;
-		this.talla = talla;
-		this.precio = precio;
-		this.stock = stock;
-		this.carritos = carritos;
-	}
 
 
 	//GETTERS Y SETTERS
@@ -153,14 +141,7 @@ public class Producto{
 	}
 
 
-	public List<Carrito> getCarritos() {
-		return carritos;
-	}
-
-
-	public void setCarritos(List<Carrito> carritos) {
-		this.carritos = carritos;
-	}
+	
 
 
 	public int getStock() {
