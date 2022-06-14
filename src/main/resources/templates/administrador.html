@@ -26,7 +26,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-center">
-					<li><h2>Administracón de KerzenStudio</h2></li>
+					<li><h2 id="tituloadmin">Administración de KerzenStudio</h2></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
@@ -41,7 +41,7 @@
 	</nav>
 	<section>
 		<h3>
-			<a href="nuevoproducto"><span class=""></span> Añadir Producto</a>
+			<a id="azul" href="nuevoproducto"><span class=""></span> Añadir Producto</a>
 		</h3>
 	</section>
 	<section>
@@ -53,8 +53,8 @@
 					<h6 th:text="${producto.nombre}"></h6>
 					<h6 th:text="${producto.precio} +'€'"></h6>
 					<h6 th:text="'STOCK => ' + ${producto.stock}"></h6>
-					<a th:href="'modificarproducto/' + ${producto.id}">MODIFICAR
-						PRODUCTO</a><br> <a th:href="'borrarproducto/' + ${producto.id}">ELIMINAR
+					<a id="azul" th:href="'modificarproducto/' + ${producto.id}">MODIFICAR
+						PRODUCTO</a><br> <a id="borrarproducto" th:href="'borrarproducto/' + ${producto.id}">ELIMINAR
 						PRODUCTO</a>
 				</div>
 			</div>

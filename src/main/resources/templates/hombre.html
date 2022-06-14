@@ -58,7 +58,11 @@
 					<h6 th:text="${productohombre.nombre}"></h6>
 					<h6 th:text="${productohombre.precio} +'€'"></h6>
 					<h6 th:text="${productohombre.stock} +' uds disponibles'"></h6>
-					<a th:href="'/aniadirproductocarrito/' + ${productohombre.id}" sec:authorize="isAuthenticated()">COMPRAR</a>
+					<a id="azul" th:if="${productohombre.stock} !=0"
+						th:href="'/aniadirproductocarrito/' + ${productohombre.id}"
+						sec:authorize="isAuthenticated()">COMPRAR</a>
+					<a id="rojo" th:if="${productohombre.stock} ==0" sec:authorize="isAuthenticated()">AGOTADO
+						TEMPORALMENTE</a>
 					
 				</div>
 

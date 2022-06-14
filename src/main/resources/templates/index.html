@@ -36,10 +36,10 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
-					<li sec:authorize="isAuthenticated()"><a href="verpedidos" type="button"
-							id="botoncesta" class="btn btn-light">Pedidos</a></li>
-					<li sec:authorize="isAuthenticated()"><a href="carrito" type="button"
-							id="botoncesta" class="btn btn-light">Carrito</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="verpedidos"
+						type="button" id="botoncesta" class="btn btn-light">Pedidos</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="carrito"
+						type="button" id="botoncesta" class="btn btn-light">Carrito</a></li>
 					<li sec:authorize="!isAuthenticated()"><a href="registrarse"><span
 							class="glyphicon glyphicon-user"></span> Regístrate</a></li>
 					<li sec:authorize="!isAuthenticated()"><a href="login"><span
@@ -60,14 +60,17 @@
 			<div class="row">
 				<div id="producto" class="col-lg-3 col-md-6 col-sm-12"
 					th:each="producto : ${productos}">
-					<img  id="imgproducto" th:src="${producto.imgUrl}"
+					<img id="imgproducto" th:src="${producto.imgUrl}"
 						alt="Imagen no disponible">
-						
+
 					<h6 th:text="${producto.nombre}"></h6>
 					<h6 th:text="${producto.precio} +'€'"></h6>
 					<h6 th:text="${producto.stock} +' uds disponibles'"></h6>
-					<a th:if="${producto.stock} !=0" th:href="'/aniadirproductocarrito/' + ${producto.id}" sec:authorize="isAuthenticated()">COMPRAR</a>
-					<h5 th:if="${producto.stock} ==0"  sec:authorize="isAuthenticated()">AGOTADO TEMPORALMENTE</h5>
+					<a id="azul" th:if="${producto.stock} !=0"
+						th:href="'/aniadirproductocarrito/' + ${producto.id}"
+						sec:authorize="isAuthenticated()">COMPRAR</a>
+					<a id="rojo" th:if="${producto.stock} ==0" sec:authorize="isAuthenticated()">AGOTADO
+						TEMPORALMENTE</a>
 				</div>
 
 

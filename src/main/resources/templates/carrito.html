@@ -63,10 +63,9 @@
 					<h6 th:text="${productocarrito.getValue()} +'unidades'"></h6>
 					<a th:href="'/eliminarproductocarrito/' + ${productocarrito.getKey().id}">ELIMINAR DE LA CESTA</a>
 				</div>
-				<section>
-				<h3>PRECIO COMPRA</h3>
+				<section id="preciocarrito">
 				<h4 th:text="'PRECIO TOTAL: ' + ${precioTotal} + '€'"></h4>
-				<a href="/pedido">PAGAR Y ENVIAR</a>
+				<a id="azul" href="/pedido">PAGAR Y ENVIAR</a>
 				</section>
 
 

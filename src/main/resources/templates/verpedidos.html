@@ -50,7 +50,7 @@
 			<div class="row">
 				<div id="producto" class="col-lg-12 col-md-12 col-sm-12"
 					th:each="pedido : ${pedidos}">
-					<h6 th:text="${pedido.id}"></h6>
+					<h6 th:text="'PEDIDO CON ID: ' + ${pedido.id}"></h6>
 					<h6 th:text="${pedido.precioPedido} +'€'"></h6>
 					<h6 th:text="${pedido.fechapedido}"></h6>
 				</div>
