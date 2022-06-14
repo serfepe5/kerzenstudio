@@ -31,15 +31,19 @@
 					<li><a href="/hombre">Hombre</a></li>
 					<li><a href="/accesorios">Accesorios</a></li>
 					<li><a href="/contacto">Contáctanos</a></li>
-					
+
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" id="botoncesta"
-							class="btn btn-light">Carrito</button></li>
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-							Regístrate</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Iniciar Sesión</a></li>
+					<li sec:authorize="isAuthenticated()"><button type="button"
+							id="botoncesta" class="btn btn-light">Carrito</button></li>
+					<li sec:authorize="!isAuthenticated()"><a href="registrarse"><span
+							class="glyphicon glyphicon-user"></span> Regístrate</a></li>
+					<li sec:authorize="!isAuthenticated()"><a href="login"><span
+							class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
+					<li id="usu" sec:authorize="isAuthenticated()">Usuario: <span
+						sec:authentication="name">Username</span> <a href="logout">Cerrar
+							sesión</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -49,25 +53,22 @@
 	</section>
 	<section>
 		<div class="container">
-			<div class="row" >
-				<div id="producto" class="col-lg-12 col-md-12 col-sm-12" th:each="producto : ${productoscarrito}">
-				<img id="imgproducto" th:src="${producto.imgUrl}" alt="Imagen no disponible">
-					<h6 th:text="${productocarrito.nombre}"></h6>
-					<h6 th:text="${productocarrito.precio} +'€'"></h6>
-					<button>ELIMINAR DE LA CESTA</button>
-					
+			<div class="row">
+				<div id="producto" class="col-lg-12 col-md-12 col-sm-12"
+					th:each="productocarrito : ${productoscarrito.entrySet()}">
+					<img id="imgproducto" th:src="${productocarrito.getKey().imgUrl}"
+						alt="Imagen no disponible">
+					<h6 th:text="${productocarrito.getKey().nombre}"></h6>
+					<h6 th:text="${productocarrito.getKey().precio} +'€'"></h6>
+					<a th:href="'/eliminarproductocarrito/' + ${productocarrito.getKey().id}">ELIMINAR DE LA CESTA</a>
+
 				</div>
 
-				
+
 			</div>
 		</div>
 	</section>
-	<!-- 	<nav style="-bs-breadcrumb-divider: '';" aria-label="breadcrumb"> -->
-	<!-- 		<ol class="breadcrumb"> -->
-	<!-- 			<li class="breadcrumb-item"><a href="#">Home</a></li> -->
-	<!-- 			<li class="breadcrumb-item active" aria-current="page">Library</li> -->
-	<!-- 		</ol> -->
-	<!-- 	</nav> -->
+
 
 
 

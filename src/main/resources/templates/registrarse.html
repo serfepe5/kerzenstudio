@@ -33,12 +33,14 @@
 					<li><a href="/contacto">Contáctanos</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" id="botoncesta"
-							class="btn btn-light">Carrito</button></li>
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-							Sign Up</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
+					<ul class="nav navbar-nav navbar-right">
+					<li sec:authorize="!isAuthenticated()"><a href="login"><span
+							class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
+					<li id="usu" sec:authorize="isAuthenticated()">Usuario: <span
+						sec:authentication="name">Username</span> <a href="logout">Cerrar
+							sesión</a>
+					</li>
+				</ul>
 				</ul>
 			</div>
 		</div>
@@ -48,29 +50,30 @@
 			<div style="padding-top: 3%; padding-bottom: 3%;"
 				class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 text-center bg-dark">
 				<h2 style="text-align: center; color: aliceblue;">
-					Contáctanos...</h2>
+					¡Registrate y empieza a comprar!</h2>
 				<br>
-				<form th:action="@{/guardarregistrarse}" th:object="${usuario}"
+				 <form name="form" autocomplete="off" th:action="@{/guardarregistrarse}" th:object="${usuario}"
 					method="post">
-
-					<table border="0" cellpadding="10">
-						<tr>
-							<td>Usuario:</td>
-							<td><input type="text" th:field="*{user}" /></td>
-						</tr>
-						<tr>
-							<td>Contraseña:</td>
-							<td><input type="password" th:field="*{password}" /></td>
-						</tr>
-						<tr>
-							<td>Email:</td>
-							<td><input type="text" th:field="*{correo}" /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><button type="submit">REGISTRARSE</button></td>
-						</tr>
-					</table>
-				</form>
+                    <div id="filaForm">
+                      <div id="bloqueDatos">
+                        <div id="bloqueNombre">
+                          <label for="nombre" style="color:aliceblue">Nombre de usuario&nbsp;</label>
+                          <input type="text" th:field="*{user}" />
+                        </div><br>
+                        <div id="bloqueemail">
+                          <label for="email" style="color:aliceblue">Correo electrónico: &nbsp;</label>
+                          <<input type="text" th:field="*{correo}" />
+                        </div><br>
+                        <div id="bloquetelefono">
+                          <label for="telefono" style="color:aliceblue">Contraseña: &nbsp;</label>
+                          <input type="password" th:field="*{password}" />
+                       
+                      <div id="bloquePrivacidad">
+                        <input type="checkbox" name="privacidad" id="privacidad">
+                        <label for="privacidad" style="color:aliceblue">Política de privacidad</label><br><br>
+                        <button type="submit" value="enviar" name="submit">Registrar</button>
+                  </form>
+				
 			</div>
 		</div>
 	</div>

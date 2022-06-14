@@ -13,6 +13,8 @@
 
 #botoncesta{
 	margin-top: 10px;
+	background-color: grey;
+	margin-right: 20px;
 }
 
 h3{
@@ -31,6 +33,10 @@ body{
     height: 100px;
 }
 
+#usu{
+	color: white;
+	text-align: center;
+}
 
 
 

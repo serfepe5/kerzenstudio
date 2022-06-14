@@ -33,16 +33,15 @@
 					<li><a href="/contacto">Contáctanos</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-						<li sec:authorize="isAuthenticated()"><button type="button" id="botoncesta"
-							class="btn btn-light">Carrito</button></li>
-					<li sec:authorize="!isAuthenticated()"><a href="registrarse"><span class="glyphicon glyphicon-user"></span>
-							Regístrate</a></li>
-					<li sec:authorize="!isAuthenticated()"><a href="login"><span class="glyphicon glyphicon-log-in"></span>
-							Iniciar Sesión</a></li>
-							<li sec:authorize="isAuthenticated()">Usuario: <span
-						sec:authentication="name">Username</span> <a href="cerrarSesion">Cerrar
+						<li sec:authorize="isAuthenticated()"><button type="button"
+							id="botoncesta" class="btn btn-light">Carrito</button></li>
+					<li sec:authorize="!isAuthenticated()"><a href="registrarse"><span
+							class="glyphicon glyphicon-user"></span> Regístrate</a></li>
+					<li sec:authorize="!isAuthenticated()"><a href="login"><span
+							class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
+					<li id="usu" sec:authorize="isAuthenticated()">Usuario: <span
+						sec:authentication="name">Username</span> <a href="logout">Cerrar
 							sesión</a>
-
 					</li>
 				</ul>
 			</div>

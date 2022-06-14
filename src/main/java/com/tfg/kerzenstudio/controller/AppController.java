@@ -1,7 +1,7 @@
 package com.tfg.kerzenstudio.controller;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -126,12 +126,6 @@ public class AppController {
 		return "administrador";
 	}
 
-	@RequestMapping("/cerrarSesion")
-	public String viewHomePage() {
-
-		return "redirect:/";
-	}
-	
 	// CONTROL DE PRODUCTOS
 	// crear producto
 	@RequestMapping("/nuevoproducto")
@@ -162,7 +156,6 @@ public class AppController {
 		return mav;
 	}
 
-
 	// borrar producto
 	@RequestMapping("/borrarproducto/{id}")
 	public String borrarProducto(@PathVariable(name = "id") Long id) {
@@ -170,7 +163,36 @@ public class AppController {
 		return "redirect:/";
 	}
 
-	////////////////////////////////////////////////USUARIO REGISTRADO//////////////////////////////////////////////////////
+	//////////////////////////////////////////////// USUARIO
+	//////////////////////////////////////////////// REGISTRADO//////////////////////////////////////////////////////
 
+	// vista carrito
+	@RequestMapping("/carrito")
+	public String viewCarritoPage(Model model) {
+		Map<Producto, Integer> productoscarrito = carritoservice.getCarrito();
+		model.addAttribute("productoscarrito", productoscarrito);
+		return "carrito";
+	}
+
+	// aniadir producto a carrito
+	@RequestMapping("/aniadirproductocarrito/{id}")
+	public String viewAniadirProductoACarrito(@PathVariable(name = "id") Long id) {
+		carritoservice.addCarrito(id);
+		return "redirect:/carrito";
+	}
+
+	// borrar producto de carrito
+	@RequestMapping("/eliminarproductocarrito/{id}")
+	public String viewBorrarProductoACarrito(@PathVariable(name = "id") Long id) {
+		carritoservice.removeItemCarrito(id);
+		return "redirect:/carrito";
+	}
+
+	// borrar producto de carrito
+	@RequestMapping("/borrarcarrito")
+	public String viewBorrarCarrito() {
+		carritoservice.vaciarCarrito();
+		return "";
+	}
 
 }
