@@ -118,6 +118,11 @@ public class AppController {
 	public String viewContactoPage(Model model) {
 		return "contacto";
 	}
+	
+	@RequestMapping("/politica")
+	public String viewPoliticaPage(Model model) {
+		return "politica";
+	}
 
 ////////////////////////////////////////////////USUARIO ADMINISTRADOR//////////////////////////////////////////////////////
 	@RequestMapping("/administrador")

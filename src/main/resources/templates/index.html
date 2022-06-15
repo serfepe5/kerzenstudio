@@ -68,16 +68,47 @@
 					<h6 th:text="${producto.stock} +' uds disponibles'"></h6>
 					<a id="azul" th:if="${producto.stock} !=0"
 						th:href="'/aniadirproductocarrito/' + ${producto.id}"
-						sec:authorize="isAuthenticated()">COMPRAR</a>
-					<a id="rojo" th:if="${producto.stock} ==0" sec:authorize="isAuthenticated()">AGOTADO
+						sec:authorize="isAuthenticated()">COMPRAR</a> <a id="rojo"
+						th:if="${producto.stock} ==0" sec:authorize="isAuthenticated()">AGOTADO
 						TEMPORALMENTE</a>
 				</div>
-
-
 			</div>
 		</div>
 	</section>
-
+	<div class="footer-dark">
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-3 item">
+						<h3>Moda</h3>
+						<ul>
+							<li><a href="/mujer">Mujer</a></li>
+							<li><a href="/hombre">Hombre</a></li>
+							<li><a href="/accesorios">Accesorios</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-6 col-md-3 item">
+						<h3>Haz algo mas...</h3>
+						<ul>
+							<li><a href="/contacto">Contactanos</a></li>
+							<li><a
+								href="https://context.reverso.net/traduccion/aleman-espanol/Kerzen">¿Qué
+									es Kerzen?</a></li>
+						</ul>
+					</div>
+					<div class="col-md-6 item text">
+						<h3>KerzenStudio</h3>
+						<p>Nuestra tienda de ropa online nace de la idea de nuestra
+							querida Cris(cuñi), una mujer empoderada y emprendedora que tiene
+							en su cabeza la imaginación y la creatividad para crear prendas
+							que nadie imagina pero que todos quieren tener.</p>
+					</div>
+				</div>
+				<a id="apolitica" href="/politica">POLÍTICA DE PRIVACIDAD</a>
+				<p class="copyright">KerzenStudio © 2022</p>
+			</div>
+		</footer>
+	</div>
 
 
 </body>
