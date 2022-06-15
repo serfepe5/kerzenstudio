@@ -35,12 +35,9 @@
 					<li><a href="/contacto">Contáctanos</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><button type="button" id="botoncesta"
-							class="btn btn-light">Carrito</button></li>
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-							Sign Up</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
+					<li sec:authorize="isAuthenticated()">Usuario: <span
+						sec:authentication="name">Username</span> <a href="logout">Cerrar
+							sesión</a>
 				</ul>
 			</div>
 		</div>
