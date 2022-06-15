@@ -74,7 +74,7 @@ public class AppController {
 		Usuario u = new Usuario();
 		model.addAttribute("usuario", u);
 
-		return "/registrarse";
+		return "registrarse";
 	}
 
 	@RequestMapping(value = "/guardarregistrarse", method = RequestMethod.POST)
