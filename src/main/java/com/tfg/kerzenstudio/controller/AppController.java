@@ -70,11 +70,11 @@ public class AppController {
 	}
 
 	@RequestMapping("/registrarse")
-	public String viewParcela(Model model) {
+	public String viewRegistrarse(Model model) {
 		Usuario u = new Usuario();
 		model.addAttribute("usuario", u);
 
-		return "/registrarse";
+		return "redirect:/registrarse";
 	}
 
 	@RequestMapping(value = "/guardarregistrarse", method = RequestMethod.POST)
