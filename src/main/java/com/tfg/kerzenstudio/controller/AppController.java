@@ -147,7 +147,7 @@ public class AppController {
 	@RequestMapping(value = "/guardarproducto", method = RequestMethod.POST)
 	public ModelAndView guardarProducto(@ModelAttribute("producto") Producto producto) {
 		productoservice.save(producto);
-		ModelAndView mav = new ModelAndView("/administrador");
+		ModelAndView mav = new ModelAndView("administrador");
 		List<Producto> productos = productoservice.listAll();
 		mav.addObject("productos", productos);
 		return mav;
